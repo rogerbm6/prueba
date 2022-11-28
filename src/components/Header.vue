@@ -1,8 +1,9 @@
 <template>
 
     <header>
-        <h1> Task tracker</h1>
-        <Button text="Add Task" color="green"></Button>
+        <h1>{{title}}</h1>
+        <Button @btn-click="$emit('toggle-add-task')" :text="showAddTask ? 'Close' : 'Add Task'" 
+        :color="showAddTask ? 'red' : 'green'" v-show="homePage"></Button>
     </header>
 
 </template>
@@ -13,12 +14,24 @@ import Button from './Button.vue';
 export default{
     name: 'Header',
     props: {
-        title: String
+        title: String,
+        showAddTask: Boolean,
     },
 
     components: {
         Button
+    },
+
+    computed : {
+        homePage(){
+            if (this.$route.path === '/') {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
+
 
 }
 

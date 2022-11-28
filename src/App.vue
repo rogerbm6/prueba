@@ -1,10 +1,11 @@
 <template>
   <div class="container">
 
-    <Header title="Task tracker"></Header>
+    <Header title="Task tracker" @toggle-add-task="toggleAddTask" :showAddTask="showAddTask" ></Header>
 
-    <Tasks :tasks="tasks"></Tasks>
+    <router-view :showAddTask="showAddTask"></router-view>
 
+    <Footer ></Footer>
   </div>
   
   
@@ -13,7 +14,7 @@
 
 <script>
 import Header from './components/Header.vue';
-import Tasks from './components/Tasks.vue';
+import Footer from './components/Footer.vue';
 
 
 
@@ -23,43 +24,28 @@ export default {
 
   components: {
     Header,
-    Tasks,
+    Footer,
   },
 
 
   data(){
     return {
 
-      tasks: [],
+      showAddTask : false,
 
-    }
+    };
+
     
   },
 
-  created() {
-    this.tasks = [
-      {
-        id: 1,
-        text: 'Doctors Appointment',
-        day: 'March 1st at 2:30pm',
-        reminder: true,
-      },
-      {
-        id: 2,
-        text: 'Meeting at school',
-        day: 'March 3rd at 1:30pm',
-        reminder: true,
-      },
-      {
-        id: 3,
-        text: 'Food Shopping',
-        day: 'March 3rd at 11:30am',
-        reminder: false,
-      },
+  methods: {
 
-    ];
-  }
-}
+    toggleAddTask(){
+      this.showAddTask = !this.showAddTask;
+    },
+  },
+
+};
 </script>
 
 

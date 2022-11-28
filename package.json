@@ -8,10 +8,13 @@
     "test:e2e": "start-server-and-test preview :4173 'cypress run --e2e'",
     "test:e2e:dev": "start-server-and-test 'vite dev --port 4173' :4173 'cypress open --e2e'",
     "test:unit": "cypress run --component",
-    "test:unit:dev": "cypress open --component"
+    "test:unit:dev": "cypress open --component",
+    "backend": "json-server --watch db.json --port 5000"
   },
   "dependencies": {
-    "vue": "^3.2.41"
+    "json-server": "^0.17.1",
+    "vue": "^3.2.41",
+    "vue-router": "^4.0.13"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.1.2",
